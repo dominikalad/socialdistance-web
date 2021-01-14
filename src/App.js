@@ -19,7 +19,7 @@ let authenticated;
 const token = localStorage.FBIdToken;
 if (token) {
   const decodedToken = jwtDecode(token);
-  if (decodedToken.exp * 1000 < Date.now()) {
+  if (decodedToken.exp * 1000 < Date.now() && window.location.href === "/") {
     window.location.href = "/login";
     authenticated = false;
   } else {
@@ -37,8 +37,18 @@ class App extends Component {
             <div className="container">
               <Switch>
                 <Route exact path="/" component={Home} />
-                <AuthRoute exact path="/login" component={Login} />
-                <AuthRoute exact path="/signup" component={Signup} />
+                <AuthRoute
+                  exact
+                  path="/login"
+                  component={Login}
+                  authenticated={authenticated}
+                />
+                <AuthRoute
+                  exact
+                  path="/signup"
+                  component={Signup}
+                  authenticated={authenticated}
+                />
               </Switch>
             </div>
           </Router>
