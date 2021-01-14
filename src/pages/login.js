@@ -13,35 +13,39 @@ import {
   TextField,
 } from "@material-ui/core";
 
+// const styles = (theme) => ({
+//   ...theme,
+// });
+
 const styles = {
-  form: {
-    textAlign: "center",
-  },
-  image: {
-    maxWidth: "100px",
-  },
-  pageTitle: {
-    margin: "10px auto",
-  },
-  textField: {
-    margin: "10px auto",
-  },
-  button: {
-    marginTop: "20px",
-    position: "relative",
-  },
-  customError: {
-    color: "red",
-    fontSize: "0.8rem",
-    marginTop: "10px",
-  },
-  signup: {
-    marginTop: "10px",
-  },
-  progress: {
-    position: "absolute",
-  },
-};
+    form: {
+        textAlign: "center",
+      },
+      image: {
+        maxWidth: "100px",
+      },
+      pageTitle: {
+        margin: "10px auto",
+      },
+      textField: {
+        margin: "10px auto",
+      },
+      button: {
+        marginTop: "20px",
+        position: "relative",
+      },
+      customError: {
+        color: "red",
+        fontSize: "0.8rem",
+        marginTop: "10px",
+      },
+      signup: {
+        marginTop: "10px",
+      },
+      progress: {
+        position: "absolute",
+      },
+}
 
 class Login extends Component {
   constructor() {
@@ -68,7 +72,7 @@ class Login extends Component {
     axios
       .post("/login", userData)
       .then((res) => {
-        console.log(res.data);
+        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
         this.setState({
           loading: false,
         });
@@ -137,7 +141,9 @@ class Login extends Component {
               disabled={loading}
             >
               Login
-              {loading && <CircularProgress size={30} className={classes.progress} />}
+              {loading && (
+                <CircularProgress size={30} className={classes.progress} />
+              )}
             </Button>
             <div className={classes.signup}>
               Don't have an account? Sign up <Link to="/signup">here</Link>
