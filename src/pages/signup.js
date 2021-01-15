@@ -1,9 +1,10 @@
 import React, { Component } from "react";
-import axios from "axios";
 import withStyles from "@material-ui/core/styles/withStyles";
 import PropTypes from "prop-types";
 import AppIcon from "../images/icon.png";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { signupUser } from "../redux/actions/userActions";
 
 import {
   Button,
@@ -18,34 +19,34 @@ import {
 // });
 
 const styles = {
-    form: {
-        textAlign: "center",
-      },
-      image: {
-        maxWidth: "100px",
-      },
-      pageTitle: {
-        margin: "10px auto",
-      },
-      textField: {
-        margin: "10px auto",
-      },
-      button: {
-        marginTop: "20px",
-        position: "relative",
-      },
-      customError: {
-        color: "red",
-        fontSize: "0.8rem",
-        marginTop: "10px",
-      },
-      signup: {
-        marginTop: "10px",
-      },
-      progress: {
-        position: "absolute",
-      },
-}
+  form: {
+    textAlign: "center",
+  },
+  image: {
+    maxWidth: "100px",
+  },
+  pageTitle: {
+    margin: "10px auto",
+  },
+  textField: {
+    margin: "10px auto",
+  },
+  button: {
+    marginTop: "20px",
+    position: "relative",
+  },
+  customError: {
+    color: "red",
+    fontSize: "0.8rem",
+    marginTop: "10px",
+  },
+  signup: {
+    marginTop: "10px",
+  },
+  progress: {
+    position: "absolute",
+  },
+};
 
 class Signup extends Component {
   constructor() {
@@ -55,17 +56,18 @@ class Signup extends Component {
       password: "",
       confirmPassword: "",
       handle: "",
-      loading: false,
       errors: {},
     };
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({ errors: nextProps.UI.errors });
+    }
+  }
+
   handleSubmit = (event) => {
     event.preventDefault();
-    this.setState({
-      loading: true,
-    });
-
     const newUserData = {
       email: this.state.email,
       password: this.state.password,
@@ -73,21 +75,7 @@ class Signup extends Component {
       handle: this.state.handle,
     };
 
-    axios
-      .post("/signup", newUserData)
-      .then((res) => {
-        localStorage.setItem("FBIdToken", `Bearer ${res.data.token}`);
-        this.setState({
-          loading: false,
-        });
-        this.props.history.push("/");
-      })
-      .catch((err) => {
-        this.setState({
-          errors: err.response.data,
-          loading: false,
-        });
-      });
+    this.props.signupUser(newUserData, this.props.history);
   };
 
   handleChange = (event) => {
@@ -97,8 +85,11 @@ class Signup extends Component {
   };
 
   render() {
-    const { classes } = this.props;
-    const { errors, loading } = this.state;
+    const {
+      classes,
+      UI: { loading },
+    } = this.props;
+    const { errors } = this.state;
     return (
       <Grid container className={classes.form}>
         <Grid item sm />
@@ -132,7 +123,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               fullWidth
             />
-              <TextField
+            <TextField
               id="confirmPassword"
               name="confirmPassword"
               type="password"
@@ -144,7 +135,7 @@ class Signup extends Component {
               onChange={this.handleChange}
               fullWidth
             />
-              <TextField
+            <TextField
               id="handle"
               name="handle"
               type="text"
@@ -186,6 +177,16 @@ class Signup extends Component {
 
 Signup.propTypes = {
   classes: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  UI: PropTypes.object.isRequired,
+  signupUser: PropTypes.func.isRequired,
 };
 
-export default withStyles(styles)(Signup);
+const mapStateToProps = (state) => ({
+  user: state.user,
+  UI: state.UI,
+});
+
+export default connect(mapStateToProps, { signupUser })(
+  withStyles(styles)(Signup)
+);
