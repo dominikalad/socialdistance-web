@@ -5,11 +5,20 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import dayjs from "dayjs";
 
-import { Button, Paper, Typography } from "@material-ui/core";
+import {
+  Button,
+  Paper,
+  Typography,
+  IconButton,
+  Tooltip,
+} from "@material-ui/core";
 import MuiLink from "@material-ui/core/Link";
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
+import EditIcon from "@material-ui/icons/Edit";
+
+import { logoutUser, uplodImage } from "../redux/actions/userActions";
 
 const styles = (theme) => ({
   paper: {
@@ -60,6 +69,18 @@ const styles = (theme) => ({
 });
 
 class Profile extends Component {
+  handleImageChange = (event) => {
+    const image = event.target.files[0];
+    const formData = new FormData();
+    formData.append("image", image, image.name);
+    this.props.uplodImage(formData);
+  };
+
+  handleEditPicture = () => {
+    const fileInput = document.getElementById("imageInput");
+    fileInput.click();
+  };
+
   render() {
     const {
       classes,
@@ -76,6 +97,17 @@ class Profile extends Component {
           <div className={classes.profile}>
             <div className="image-wrapper">
               <img src={imageUrl} alt="profile" className="profile-image" />
+              <input
+                type="file"
+                id="imageInput"
+                onChange={this.handleImageChange}
+                hidden
+              />
+              <Tooltip title="Edit profile pic" placement="top">
+                <IconButton onClick={this.handleEditPicture} classname="button">
+                  <EditIcon color="primary" />
+                </IconButton>
+              </Tooltip>
             </div>
             <hr />
             <div className="profile-details">
@@ -148,9 +180,16 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
+const mapActionsToProps = { logoutUser, uplodImage };
+
 Profile.propTypes = {
   user: PropTypes.object.isRequired,
   classes: PropTypes.object.isRequired,
+  logoutUser: PropTypes.func.isRequired,
+  uplodImage: PropTypes.func.isRequired,
 };
 
-export default connect(mapStateToProps)(withStyles(styles)(Profile));
+export default connect(
+  mapStateToProps,
+  mapActionsToProps
+)(withStyles(styles)(Profile));
