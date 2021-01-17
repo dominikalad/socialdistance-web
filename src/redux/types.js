@@ -10,6 +10,7 @@ export const SET_SCREAM = "SET_SCREAM";
 export const LIKE_SCREAM = "LIKE_SCREAM";
 export const UNLIKE_SCREAM = "UNLIKE_SCREAM";
 export const LOADING_DATA = "LOADING_DATA";
+export const DELETE_SCREAM = "DELETE_SCREAM";
 
 //uiReducer types
 export const SET_ERRORS = "SET_ERRORS";

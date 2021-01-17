@@ -7,6 +7,7 @@ import PropTypes from "prop-types";
 
 import { likeScream, unlikeScream } from "../redux/actions/dataActions";
 import ButtonUtil from "../util/ButtonUtil";
+import DeleteScream from "./DeleteScream";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import ChatIcon from "@material-ui/icons/Chat";
@@ -35,7 +36,6 @@ class Scream extends Component {
         (like) => like.screamId === this.props.scream.screamId
       )
     ) {
-      console.log(this.props.user.likes, "likes");
       return true;
     } else {
       return false;
@@ -63,7 +63,10 @@ class Scream extends Component {
         likeCount,
         commentCount,
       },
-      user: { authenticated },
+      user: {
+        authenticated,
+        credentials: { handle },
+      },
     } = this.props;
 
     const likeButton = !authenticated ? (
@@ -81,6 +84,12 @@ class Scream extends Component {
         <FavoriteBorderIcon color="primary" />
       </ButtonUtil>
     );
+
+    const deleteButton =
+      authenticated && userHandle === handle ? (
+        <DeleteScream screamId={screamId} />
+      ) : null;
+
     return (
       <Card className={classes.card}>
         <CardMedia
@@ -108,6 +117,7 @@ class Scream extends Component {
           </ButtonUtil>
           <span>{commentCount} comments</span>
         </CardContent>
+        {deleteButton}
       </Card>
     );
   }
