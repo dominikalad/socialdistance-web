@@ -17,6 +17,9 @@ import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
 import EditIcon from "@material-ui/icons/Edit";
+import KeyboardReturn from "@material-ui/icons/KeyboardReturn";
+
+import EditDetails from "./EditDetails";
 
 import { logoutUser, uplodImage } from "../redux/actions/userActions";
 
@@ -81,6 +84,10 @@ class Profile extends Component {
     fileInput.click();
   };
 
+  handleLogout = () => {
+    this.props.logoutUser();
+  };
+
   render() {
     const {
       classes,
@@ -104,7 +111,7 @@ class Profile extends Component {
                 hidden
               />
               <Tooltip title="Edit profile pic" placement="top">
-                <IconButton onClick={this.handleEditPicture} classname="button">
+                <IconButton onClick={this.handleEditPicture} className="button">
                   <EditIcon color="primary" />
                 </IconButton>
               </Tooltip>
@@ -142,6 +149,12 @@ class Profile extends Component {
               <CalendarToday color="primary" />{" "}
               <span>Joined {dayjs(createdAt).format("MMM YYYY")}</span>
             </div>
+            <Tooltip title="Logout" placement="top">
+              <IconButton onClick={this.handleLogout}>
+                <KeyboardReturn color="primary" />
+              </IconButton>
+            </Tooltip>
+            <EditDetails />
           </div>
         </Paper>
       ) : (
