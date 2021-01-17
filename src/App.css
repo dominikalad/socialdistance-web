@@ -11,6 +11,15 @@ body {
   max-width: 1200px;
 }
 
+.nav-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.nav-container svg {
+  color: #fff;
+}
+
 a {
   text-decoration: none;
 }

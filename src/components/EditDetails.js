@@ -6,16 +6,16 @@ import { connect } from "react-redux";
 import { editUserDetails } from "../redux/actions/userActions";
 
 import {
-  Tooltip,
   Button,
   TextField,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
-  IconButton,
 } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
+
+import ButtonUtil from "../util/ButtonUtil";
 
 // const styles = (theme) => ({
 //   ...theme,
@@ -77,11 +77,13 @@ class EditDetails extends Component {
     const { classes } = this.props;
     return (
       <Fragment>
-        <Tooltip title="Edit details" placement="top">
-          <IconButton onClick={this.handleOpen} className={classes.button}>
-            <EditIcon color="primary" />
-          </IconButton>
-        </Tooltip>
+        <ButtonUtil
+          tip="Edit details"
+          onClick={this.handleOpen}
+          btnClassName={classes.button}
+        >
+          <EditIcon color="primary" />
+        </ButtonUtil>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
