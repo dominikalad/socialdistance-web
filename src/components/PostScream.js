@@ -20,17 +20,17 @@ import CloseIcon from "@material-ui/icons/Close";
 import ButtonUtil from "../util/ButtonUtil";
 
 const styles = {
-    submitButton: {
-        position: 'relative'
-    },
-    progressSpinner: {
-        position: 'absolute',
-    },
-    closeButton: {
-        position: 'absolute',
-        left: '90%',
-        top: '10%',
-    }
+  submitButton: {
+    position: "relative",
+  },
+  progressSpinner: {
+    position: "absolute",
+  },
+  closeButton: {
+    position: "absolute",
+    left: "90%",
+    top: "10%",
+  },
 };
 
 class PostScream extends Component {
@@ -40,12 +40,33 @@ class PostScream extends Component {
     errors: {},
   };
 
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.UI.errors) {
+      this.setState({
+        errors: nextProps.UI.errors,
+      });
+    }
+    if (!nextProps.UI.errors && !nextProps.UI.loading) {
+        this.setState({ body: ''});
+        this.handleClose();
+    }
+  }
+
   handleOpen = () => {
     this.setState({ open: true });
   };
 
   handleClose = () => {
-    this.setState({ open: false });
+    this.setState({ open: false, errors: {} });
+  };
+
+  handleChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.postScream({ body: this.state.body });
   };
 
   render() {
