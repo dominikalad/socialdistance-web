@@ -8,6 +8,7 @@ import PropTypes from "prop-types";
 import { likeScream, unlikeScream } from "../redux/actions/dataActions";
 import ButtonUtil from "../util/ButtonUtil";
 import DeleteScream from "./DeleteScream";
+import ScreamDialog from "./ScreamDialog";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import ChatIcon from "@material-ui/icons/Chat";
@@ -116,6 +117,7 @@ class Scream extends Component {
             <ChatIcon color="primary" />
           </ButtonUtil>
           <span>{commentCount} comments</span>
+          <ScreamDialog screamId={screamId} userHandle={userHandle} />
         </CardContent>
         {deleteButton}
       </Card>

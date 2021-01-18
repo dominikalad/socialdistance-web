@@ -13,7 +13,6 @@ import {
   CircularProgress,
   DialogTitle,
 } from "@material-ui/core";
-import EditIcon from "@material-ui/icons/Edit";
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 
