@@ -1,13 +1,16 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
 import dayjs from "dayjs";
 import { Link } from "react-router-dom";
 
 import { connect } from "react-redux";
 import { getScream } from "../redux/actions/dataActions";
 
+import LikeButton from "./LikeButton";
 import ButtonUtil from "../util/ButtonUtil";
+
+import withStyles from "@material-ui/core/styles/withStyles";
+import ChatIcon from "@material-ui/icons/Chat";
 
 import {
   Dialog,
@@ -26,18 +29,21 @@ const styles = {
     margin: 4,
   },
   profileImage: {
-      maxWidth: 200,
-      height: 200,
-      borderRadius: '50%',
-      objectFit: 'cover'
+    maxWidth: 200,
+    height: 200,
+    borderRadius: "50%",
+    objectFit: "cover",
   },
   dialogContent: {
-      padding: 20,
+    padding: 20,
   },
   closeButton: {
-      position: 'absolute',
-      left: "90%"
-  }
+    position: "absolute",
+    left: "92%",
+  },
+  expandButton: {
+    alignSelf: "flex-start",
+  },
 };
 
 class ScreamDialog extends Component {
@@ -91,6 +97,12 @@ class ScreamDialog extends Component {
           </Typography>
           <hr className={classes.invisibleSeparator} />
           <Typography variant="body1">{body}</Typography>
+          <LikeButton screamId={screamId} />
+          <span>{likeCount} hearts</span>
+          <ButtonUtil tip="comments">
+            <ChatIcon color="primary" />
+          </ButtonUtil>
+          <span>{commentCount} comments</span>
         </Grid>
       </Grid>
     );

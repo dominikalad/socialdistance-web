@@ -12,8 +12,6 @@ import DeleteOutline from "@material-ui/icons/DeleteOutline";
 
 const styles = {
   deleteButton: {
-    marginLeft: "auto",
-    display: "flex",
     alignSelf: "flex-start",
   },
 };
