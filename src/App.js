@@ -19,7 +19,7 @@ import Navbar from "./components/layout/Navbar";
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Signup from "./pages/signup";
-
+import User from "./pages/user";
 
 const theme = createMuiTheme(themeFile);
 
@@ -48,6 +48,7 @@ class App extends Component {
                 <Route exact path="/" component={Home} />
                 <AuthRoute exact path="/login" component={Login} />
                 <AuthRoute exact path="/signup" component={Signup} />
+                <Route exact path="/users/:handle" component={User} />
               </Switch>
             </div>
           </Router>
