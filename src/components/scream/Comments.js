@@ -20,7 +20,7 @@ const styles = {
     width: "100%",
     marginBottom: 20,
   },
-  contentImage: {
+  commentImage: {
     maxWidth: "100%",
     height: 100,
     objectFit: "cover",
@@ -40,12 +40,12 @@ class Comments extends Component {
           const { body, createdAt, userImage, userHandle } = comment;
           return (
             <Fragment key={id}>
-              <Grid item sm={12}>
-                <Grid container>
+              <Grid container>
+                <Grid item>
                   <img
                     src={userImage}
                     alt="comment"
-                    className={classes.contentImage}
+                    className={classes.commentImage}
                   />
                 </Grid>
                 <Grid item sm={9}>
