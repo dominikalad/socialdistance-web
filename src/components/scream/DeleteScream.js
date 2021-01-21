@@ -2,9 +2,9 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import { deleteScream } from "../redux/actions/dataActions";
+import { deleteScream } from "../../redux/actions/dataActions";
 
-import ButtonUtil from "../util/ButtonUtil";
+import ButtonUtil from "../../util/ButtonUtil";
 
 import withStyles from "@material-ui/core/styles/withStyles";
 import { Button, Dialog, DialogTitle, DialogActions } from "@material-ui/core";

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 import { connect } from "react-redux";
-import { editUserDetails } from "../redux/actions/userActions";
+import { editUserDetails } from "../../redux/actions/userActions";
 
 import {
   Button,
@@ -15,7 +15,7 @@ import {
 } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 
-import ButtonUtil from "../util/ButtonUtil";
+import ButtonUtil from "../../util/ButtonUtil";
 
 // const styles = (theme) => ({
 //   ...theme,

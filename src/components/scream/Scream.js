@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 import LikeButton from "./LikeButton";
-import ButtonUtil from "../util/ButtonUtil";
+import ButtonUtil from "../../util/ButtonUtil";
 import DeleteScream from "./DeleteScream";
 import ScreamDialog from "./ScreamDialog";
 

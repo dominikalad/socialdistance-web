@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
-import ButtonUtil from "../util/ButtonUtil";
-import PostScream from "./PostScream";
+import ButtonUtil from "../../util/ButtonUtil";
+import PostScream from "../scream/PostScream";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";

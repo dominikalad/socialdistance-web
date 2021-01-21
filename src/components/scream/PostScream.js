@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import withStyles from "@material-ui/core/styles/withStyles";
 
 import { connect } from "react-redux";
-import { postScream, clearErrors } from "../redux/actions/dataActions";
+import { postScream, clearErrors } from "../../redux/actions/dataActions";
 
 import {
   Button,
@@ -16,7 +16,7 @@ import {
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
 
-import ButtonUtil from "../util/ButtonUtil";
+import ButtonUtil from "../../util/ButtonUtil";
 
 const styles = {
   submitButton: {
