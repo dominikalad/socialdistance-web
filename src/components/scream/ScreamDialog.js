@@ -8,7 +8,7 @@ import { getScream, clearErrors } from "../../redux/actions/dataActions";
 
 import LikeButton from "./LikeButton";
 import ButtonUtil from "../../util/ButtonUtil";
-import Comments from './Comments';
+import Comments from "./Comments";
 import CommentForm from "./CommentForm";
 import withStyles from "@material-ui/core/styles/withStyles";
 import {
@@ -54,14 +54,31 @@ const styles = {
 class ScreamDialog extends Component {
   state = {
     open: false,
+    newPath: "",
+    oldPath: "",
   };
 
+  componentDidMount() {
+    if (this.props.openDialog) {
+      this.handleOpen();
+    }
+  }
+
   handleOpen = () => {
-    this.setState({ open: true });
+    let oldPath = window.location.pathname;
+    const { userHandle, screamId } = this.props;
+    const newPath = `/users/${userHandle}/scream/${screamId}`;
+
+    if (oldPath ===newPath) oldPath = `/users/${userHandle}`
+
+    window.history.pushState(null, null, newPath);
+
+    this.setState({ open: true, newPath, oldPath });
     this.props.getScream(this.props.screamId);
   };
 
   handleClose = () => {
+    window.history.pushState(null, null, this.state.oldPath);
     this.setState({ open: false });
     this.props.clearErrors();
   };
@@ -77,11 +94,10 @@ class ScreamDialog extends Component {
         commentCount,
         userImage,
         userHandle,
-        comments
+        comments,
       },
-      UI: { loading }
+      UI: { loading },
     } = this.props;
-
 
     const dialogMarkup = loading ? (
       <CircularProgress size={200} />
