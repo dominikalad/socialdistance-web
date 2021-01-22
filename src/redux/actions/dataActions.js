@@ -90,6 +90,7 @@ export const unlikeScream = (screamId) => (dispatch) => {
 };
 
 export const submitComment = (screamId, commentData) => (dispatch) => {
+  console.log(screamId)
   axios
     .post(`scream/${screamId}/comment`, commentData)
     .then((res) => {

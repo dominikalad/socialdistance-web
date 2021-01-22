@@ -15,7 +15,6 @@ import {
   Dialog,
   DialogContent,
   CircularProgress,
-  DialogTitle,
   Grid,
   Typography,
 } from "@material-ui/core";
@@ -69,6 +68,7 @@ class ScreamDialog extends Component {
     const { userHandle, screamId } = this.props;
     const newPath = `/users/${userHandle}/scream/${screamId}`;
 
+    //FIX : its bugging POST comment
     if (oldPath ===newPath) oldPath = `/users/${userHandle}`
 
     window.history.pushState(null, null, newPath);
