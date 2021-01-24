@@ -8,6 +8,12 @@ import { Grid, Typography } from "@material-ui/core";
 
 const styles = (theme) => ({
   ...theme.styles,
+  commentImage: {
+    maxWidth: 100,
+    height: 100,
+    objectFit: "cover",
+    borderRadius: "50%",
+  },
 });
 
 class Comments extends Component {

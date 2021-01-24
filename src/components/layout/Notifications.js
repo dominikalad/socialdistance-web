@@ -80,7 +80,7 @@ class Notifications extends Component {
             );
 
           return (
-            <MenuItem key={notification.createdAt} onclick={this.handleClose}>
+            <MenuItem key={notification.createdAt} onClick={this.handleClose}>
               {icon}
               <Typography
                 component={Link}
