@@ -1,9 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
 
 import LikeButton from "./LikeButton";
 import ButtonUtil from "../../util/ButtonUtil";
@@ -20,7 +20,7 @@ const styles = {
     marginBottom: "15px",
   },
   image: {
-    minWidth: "120px",
+    minWidth: "150px",
   },
   content: {
     padding: "25px",

@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
-
 import { connect } from "react-redux";
-import { editUserDetails } from "../../redux/actions/userActions";
+import PropTypes from "prop-types";
 
+import { editUserDetails } from "../../redux/actions/userActions";
+import ButtonUtil from "../../util/ButtonUtil";
+
+import withStyles from "@material-ui/core/styles/withStyles";
 import {
   Button,
   TextField,
@@ -15,13 +16,8 @@ import {
 } from "@material-ui/core";
 import EditIcon from "@material-ui/icons/Edit";
 
-import ButtonUtil from "../../util/ButtonUtil";
-
-// const styles = (theme) => ({
-//   ...theme,
-// });
-
-const styles = () => ({
+const styles = (theme) => ({
+  ...theme.styles,
   button: {
     float: "right",
   },

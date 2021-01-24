@@ -1,10 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import axios from "axios";
-import { connect } from "react-redux";
 
 import ScreamSkeleton from "../util/ScreamSkeleton";
-// import ProfileSkeleton from "../util/ProfileSkeleton";
+import ProfileSkeleton from "../util/ProfileSkeleton";
 import StaticProfile from "../components/profile/StaticProfile";
 import Scream from "../components/scream/Scream";
 import { getUserData } from "../redux/actions/dataActions";
@@ -60,9 +60,9 @@ class User extends Component {
         <Grid item sm={4} xs={12}>
           {!!this.state.profile ? (
             <StaticProfile profile={this.state.profile} />
-          ) : null
-            // <ProfileSkeleton />
-          }
+          ) : (
+            <ProfileSkeleton />
+          )}
         </Grid>
       </Grid>
     );

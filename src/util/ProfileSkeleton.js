@@ -1,10 +1,10 @@
 import React from "react";
 import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
+
 import NoImg from "../images/no-img.png";
 
+import withStyles from "@material-ui/core/styles/withStyles";
 import { Paper } from "@material-ui/core";
-
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";
@@ -17,15 +17,15 @@ const styles = (theme) => ({
     backgroundColor: "rgba(0,0,0,0.2)",
     marginBottom: 7,
 
-    margin: 'auto',
+    margin: "auto",
   },
   handle: {
     width: 60,
     height: 20,
-    backgroundColor: "#ffeb3b",
+    backgroundColor: "#8bc34a",
     marginBottom: 7,
-    
-    margin: 'auto'
+
+    margin: "auto",
   },
 });
 

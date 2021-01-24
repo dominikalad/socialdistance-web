@@ -1,10 +1,11 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
-
 import { connect } from "react-redux";
-import { postScream, clearErrors } from "../../redux/actions/dataActions";
+import PropTypes from "prop-types";
 
+import { postScream, clearErrors } from "../../redux/actions/dataActions";
+import ButtonUtil from "../../util/ButtonUtil";
+
+import withStyles from "@material-ui/core/styles/withStyles";
 import {
   Button,
   TextField,
@@ -15,8 +16,6 @@ import {
 } from "@material-ui/core";
 import AddIcon from "@material-ui/icons/Add";
 import CloseIcon from "@material-ui/icons/Close";
-
-import ButtonUtil from "../../util/ButtonUtil";
 
 const styles = {
   submitButton: {
@@ -57,7 +56,7 @@ class PostScream extends Component {
   };
 
   handleClose = () => {
-    this.props.clearErrors()
+    this.props.clearErrors();
     this.setState({ open: false, errors: {} });
   };
 

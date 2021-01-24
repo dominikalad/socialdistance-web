@@ -1,10 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import { connect } from "react-redux";
 
 import { likeScream, unlikeScream } from "../../redux/actions/dataActions";
-
 import ButtonUtil from "../../util/ButtonUtil";
 
 import FavoriteIcon from "@material-ui/icons/Favorite";

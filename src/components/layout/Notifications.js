@@ -1,8 +1,11 @@
 import React, { Component, Fragment } from "react";
-import PropTypes from "prop-types";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
 import dayjs from "dayjs";
 import relativeTime from "dayjs/plugin/relativeTime";
+
+import { markNotificationsRead } from "../../redux/actions/userActions";
 
 import {
   Menu,
@@ -12,13 +15,9 @@ import {
   Typography,
   Badge,
 } from "@material-ui/core";
-
 import NotificationsIcon from "@material-ui/icons/Notifications";
 import FavoriteIcon from "@material-ui/icons/Favorite";
 import ChatIcon from "@material-ui/icons/Chat";
-
-import { connect } from "react-redux";
-import { markNotificationsRead } from "../../redux/actions/userActions";
 
 class Notifications extends Component {
   state = {
@@ -74,7 +73,7 @@ class Notifications extends Component {
           const time = dayjs(notification.createdAt).fromNow();
           const iconColor = notification.read ? "primary" : "secondary";
           const icon =
-          notification.type === "like" ? (
+            notification.type === "like" ? (
               <FavoriteIcon color={iconColor} style={{ marginRight: 10 }} />
             ) : (
               <ChatIcon color={iconColor} style={{ marginRight: 10 }} />

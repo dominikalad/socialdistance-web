@@ -1,11 +1,10 @@
 import React, { Fragment } from "react";
-import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
-import dayjs from "dayjs";
 import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import dayjs from "dayjs";
 
+import withStyles from "@material-ui/core/styles/withStyles";
 import { Link as MuiLink, Paper, Typography } from "@material-ui/core";
-
 import LocationOn from "@material-ui/icons/LocationOn";
 import LinkIcon from "@material-ui/icons/Link";
 import CalendarToday from "@material-ui/icons/CalendarToday";

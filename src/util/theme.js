@@ -1,15 +1,15 @@
 export default {
   palette: {
     primary: {
-      light: "#ffef62",
-      main: "#ffeb3b",
-      dark: "#b2a429",
+      light: "#a2cf6e",
+      main: "#8bc34a",
+      dark: "#618833",
       contrastText: "#000",
     },
     secondary: {
-      light: "#fff7b0",
-      main: "#fff59d",
-      dark: "#b2ab6d",
+      light: "#ffcf33",
+      main: "#ffc400",
+      dark: "#b28900",
       contrastText: "#000",
     },
   },
@@ -67,7 +67,7 @@ export default {
           verticalAlign: "middle",
         },
         "& a": {
-          color: "#ffeb3b",
+          color: "#8bc34a",
         },
       },
       "& hr": {
@@ -102,7 +102,7 @@ export default {
     handle: {
       width: 60,
       height: 20,
-      backgroundColor: "#ffeb3b",
+      backgroundColor: "#8bc34a",
       marginBottom: 7,
     },
     date: {
@@ -122,6 +122,24 @@ export default {
       width: "45%",
       backgroundColor: "rgba(0,0,0,0.2)",
       marginBottom: 10,
+    },
+    invisibleSeparator: {
+      border: "none",
+      margin: 4,
+    },
+    visibleSeparator: {
+      borderBottom: "1px solid rgba(0,0,0,0.1)",
+      width: "100%",
+      marginBottom: 20,
+    },
+    commentImage: {
+      maxWidth: "100%",
+      height: 100,
+      objectFit: "cover",
+      borderRadius: "50%",
+    },
+    commentData: {
+      marginLeft: 20,
     },
   },
 };

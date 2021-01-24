@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import PropTypes from "prop-types";
-import withStyles from "@material-ui/core/styles/withStyles";
 import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
 import { submitComment } from "../../redux/actions/dataActions";
 
+import withStyles from "@material-ui/core/styles/withStyles";
 import { TextField, Button, Grid } from "@material-ui/core";
 
 const styles = {

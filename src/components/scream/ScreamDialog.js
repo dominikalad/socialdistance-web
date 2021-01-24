@@ -1,15 +1,15 @@
 import React, { Component, Fragment } from "react";
+import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import dayjs from "dayjs";
-import { Link } from "react-router-dom";
 
-import { connect } from "react-redux";
 import { getScream, clearErrors } from "../../redux/actions/dataActions";
-
 import LikeButton from "./LikeButton";
 import ButtonUtil from "../../util/ButtonUtil";
 import Comments from "./Comments";
 import CommentForm from "./CommentForm";
+
 import withStyles from "@material-ui/core/styles/withStyles";
 import {
   Dialog,
@@ -21,17 +21,10 @@ import {
 import CloseIcon from "@material-ui/icons/Close";
 import UnfoldMoreIcon from "@material-ui/icons/UnfoldMore";
 import ChatIcon from "@material-ui/icons/Chat";
+import theme from "../../util/theme";
 
-const styles = {
-  invisibleSeparator: {
-    border: "none",
-    margin: 4,
-  },
-  visibleSeparator: {
-    borderBottom: "1px solid rgba(0,0,0,0.1)",
-    width: "100%",
-    marginBottom: 20,
-  },
+const styles = (theme) => ({
+  ...theme.styles,
   profileImage: {
     maxWidth: 200,
     height: 200,
@@ -48,7 +41,7 @@ const styles = {
   expandButton: {
     alignSelf: "flex-start",
   },
-};
+});
 
 class ScreamDialog extends Component {
   state = {
@@ -69,7 +62,7 @@ class ScreamDialog extends Component {
     const newPath = `/users/${userHandle}/scream/${screamId}`;
 
     //FIX : its bugging POST comment
-    if (oldPath ===newPath) oldPath = `/users/${userHandle}`
+    if (oldPath === newPath) oldPath = `/users/${userHandle}`;
 
     window.history.pushState(null, null, newPath);
 
